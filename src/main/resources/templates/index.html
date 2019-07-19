@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+	<head>
+	<title>Curso - Disciplina</title>
+	 <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      <link rel="stylesheet" href="style/styleCSS.css"/>
+	
+</head>
+<body>
+	<header>
+	  <nav>
+	    <div class="nav-wrapper">
+	      <a href="#" class="brand-logo">Lista de Cursos </a>
+	      <ul id="nav-mobile" class="right hide-on-med-and-down">
+	        <li><a href="/cadastrarCurso" class="waves-effect waves-light btn"> <i class="material-icons left">add_circle_outline</i> Cadastrar Curso</a></li>
+	      </ul>
+	    </div>
+	  </nav>
+	</header>
+		
+	<table class="container">
+		<thead>
+			<tr>
+				<th>Nome</th>
+				<th>Deletar</th>
+				
+			</tr>
+		</thead>
+		
+		<tbody>
+			<tr th:each="curso : ${cursos}">
+				
+			<td><a th:href="${curso.id}"><span th:text="${curso.nome}"></span></a></td>
+			<td><a class="waves-effect waves-light btn-small" th:href="${curso.id}"><i class="material-icons left">delete</i> <span></span></a></td>
+						<!--(#mvc.url('CC#detalhesCurso').arg(0, curso.id)).build() -->		
+			</tr>
+		
+		</tbody>
+	
+	
+	
+	
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+
+</body>
+
+</html>

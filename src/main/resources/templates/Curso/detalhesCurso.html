@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+	<head>
+	<title>Curso - Disciplina</title>
+	 <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      <link rel="stylesheet" href="style/styleCSS.css"/>
+	
+</head>
+<body>
+<header>
+<nav>
+  <div class="nav-wrapper">
+    <a href="#" class="brand-logo"> Detalhes do Cursos  </a>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <li> <a href="/curso" class="waves-effect waves-light btn"> <i class="material-icons left">add_circle_outline</i> Lista de Curso</a></li>
+    </ul>
+  </div>
+</nav>
+</header>
+	
+		
+	<div  th:each="curso : ${cursos}" class="container detalheCurso">
+	<h5> Detalhes do curso </h5>
+		<div class="row">
+			<p>Nome: <span  th:text="${curso.nome}">  </span></p>
+		</div>
+		 <th:block th:include="mensagemValidacao"></th:block>
+	</div>
+		
+	
+		<form class="container formDisciplina" method="post">
+			Disciplina: <input type="text" value="" name="nome"/>
+		 
+		<button class="waves-effect waves-light btn" type="submit">Adicionar</button>
+		</form>
+	
+	
+	<table class="container tabelaDisciplina" >
+		<thead>
+			<tr>
+				<th> Nome </th>
+				<th> Deletar </th>
+			<tr>
+		
+		</thead>
+		
+		<tbody>
+		<tr th:each="disciplina: ${disciplinas}">
+			<td><span th:text="${disciplina.nome}"> </span></td>
+			<td><span class="waves-effect waves-light btn-small" th:href="${disciplina.id}"><i class="material-icons left">delete</i> </span></td>
+			
+			</tr>
+		</tbody>
+	</table>
+		
+	
+	
+	
+	
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+
+</body>
+
+</html>
